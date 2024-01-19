@@ -1,0 +1,35 @@
+.checkbox {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+
+	gap: 28px;
+
+	&__button {
+		position: relative;
+		width: 25px;
+		height: 25px;
+		border: 1px solid #121212;
+		border-radius: 5px;
+
+		&::after {
+			content: '';
+			position: absolute;
+			width: 18px;
+			height: 18px;
+			top: 2px;
+			left: 2px;
+			background-color: orange;
+			opacity: 0;
+			visibility: hidden;
+			transition: opacity 0.3s ease 0s;
+			border-radius: 5px;
+		}
+		&_active {
+			&::after {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+	}
+}

@@ -1,0 +1,42 @@
+.cart {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	position: relative;
+
+	svg {
+		fill: #fff;
+	}
+
+	&__quantity {
+		position: absolute;
+		top: -6px;
+		right: -6px;
+		width: 15px;
+		height: 15px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		background-color: red;
+		color: #fafbfc;
+		font-size: 14px;
+		font-weight: 500;
+	}
+
+	&__profile {
+	}
+
+	&__body {
+		position: absolute;
+		top: 50px;
+		right: 0;
+		z-index: 2;
+		width: 300px;
+		height: 300px;
+		overflow-y: scroll;
+		background-color: #423;
+		padding: 10px;
+	}
+}

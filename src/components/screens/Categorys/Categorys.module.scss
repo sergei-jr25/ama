@@ -1,0 +1,17 @@
+.category {
+	display: grid;
+	gap: 15px;
+	align-content: start;
+
+	&__items {
+		font-size: 18px;
+		font-weight: 600;
+		transition: color 0.3s ease 0s;
+		cursor: pointer;
+		@media (any-hover: hover) {
+			&:hover {
+				color: orange;
+			}
+		}
+	}
+}

@@ -1,0 +1,18 @@
+.group {
+	display: grid;
+	gap: 20px;
+
+	&__category {
+		color: #121212;
+		font-size: 14px;
+
+		&_active {
+			color: red;
+		}
+	}
+
+	&__button {
+		text-align: left;
+		color: #121212;
+	}
+}

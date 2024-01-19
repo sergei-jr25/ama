@@ -1,0 +1,40 @@
+.user {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	position: relative;
+
+	&__list {
+		display: grid;
+		gap: 12px;
+	}
+
+	&__item {
+		@media (any-hover: hover) {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+
+		button {
+			@media (any-hover: hover) {
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+
+	svg {
+		fill: #fff;
+	}
+
+	&__profile {
+		position: absolute;
+		top: 100%;
+		right: 0;
+		z-index: 2;
+		padding: 10px;
+		background-color: #565656;
+	}
+}

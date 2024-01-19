@@ -1,0 +1,24 @@
+.layout {
+	display: grid;
+	gap: 100px;
+
+	&__container {
+		// max-width: 1600px;
+		padding: 0 15px;
+		margin: 0px auto;
+	}
+	&__content {
+		padding: 50px 0 0 0;
+
+		display: grid;
+		grid-template-columns: 250px 1fr;
+		gap: 50px;
+	}
+
+	&__main {
+		// display: grid;
+		// grid-template-columns: 200px 1fr;
+		gap: 30px;
+		background-color: #fbfafc;
+	}
+}
