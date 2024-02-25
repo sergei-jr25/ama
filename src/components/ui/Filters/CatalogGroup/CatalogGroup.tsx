@@ -10,6 +10,7 @@ import { useCatalogGroup } from './useCatalogGroup'
 const CatalogGroup: FC = () => {
 	const { data, isFetched } = useCatalogGroup()
 	const searchParams = useSearchParams()
+	console.log(data)
 
 	const categoryId = searchParams.get('category')
 	const { uploadNewParams, removeQueryParams } = useFilters()
