@@ -8,6 +8,7 @@ export const useFilters = () => {
 
 	const pathname = usePathname()
 	const searchParams = useSearchParams()!
+
 	const newParams = new URLSearchParams(searchParams.toString())
 	const { updateQueryParams, resetFilter } = useActions()
 	const { replace, push } = useRouter()
@@ -17,12 +18,6 @@ export const useFilters = () => {
 			updateQueryParams({ key: key as keyof IQueryParams, value })
 		})
 	}
-
-	// useEffect(() => {
-	// 	searchParams.forEach((value, key) => {
-	// 		updateQueryParams({ key: key as keyof IQueryParams, value })
-	// 	})
-	// }, [])
 
 	const uploadNewParams = (key: keyof IQueryParams, value: string) => {
 		if (value) {
@@ -36,6 +31,8 @@ export const useFilters = () => {
 
 	const removeQueryParams = () => {
 		searchParams.forEach((value, key) => {
+			console.log(key)
+
 			newParams.delete(key)
 		})
 

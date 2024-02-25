@@ -23,10 +23,10 @@ const Info: FC = () => {
 		<div className={styles.info}>
 			<div className={styles.info__image}>
 				<Image
-					src={profile.avatarPath || ''}
+					src={profile?.avatarPath}
 					width={40}
 					height={40}
-					alt={profile.name || ''}
+					alt={profile?.name}
 				/>
 			</div>
 			<div className={styles.info__email}>{profile.email}</div>

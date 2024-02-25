@@ -6,7 +6,7 @@ interface ICounter {
 	count: number
 	incrementToCart: () => void
 	decrementToCart: () => void
-	isFetching: boolean
+	isFetching?: boolean
 }
 
 const Counter: FC<ICounter> = ({
@@ -36,17 +36,10 @@ const Counter: FC<ICounter> = ({
 	const increaseCount = () => {
 		incrementToCart()
 		setIsIncrease
-
-		// if (count === totalCount) {
-		// 	setIsIncrease(true)
-		// }
 	}
 
 	const decreaseCount = () => {
 		decrementToCart()
-		// if (count === 1) {
-		// 	setIsDecrease(true)
-		// }
 	}
 
 	return (
@@ -55,6 +48,7 @@ const Counter: FC<ICounter> = ({
 				disabled={isDecrease}
 				className={styles.counter__minus}
 				onClick={decreaseCount}
+				name='minus'
 			></button>
 
 			<span className={styles.counter__number}>{count}</span>
@@ -63,6 +57,8 @@ const Counter: FC<ICounter> = ({
 				disabled={isIncrease}
 				className={styles.counter__plus}
 				onClick={increaseCount}
+				name='plus'
+				data-testid='plus-button'
 			></button>
 		</div>
 	)

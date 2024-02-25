@@ -1,18 +1,18 @@
 import AddToCartButton from '@/components/ui/Prouduct/product-item/AddToCartButton/AddToCartButton'
 import FavoriteButton from '@/components/ui/Prouduct/product-item/FavoriteButton/FavoriteButton'
-import { useCart } from '@/hooks/useCart'
-import { IProduct } from '@/types/product.interface'
 import Image from 'next/image'
 import { FC } from 'react'
 import styles from './Products.module.scss'
+import { IProductItem } from './poruct-interface'
 
-const ProductsItem: FC<{ product: IProduct }> = ({ product }) => {
-	const { items } = useCart()
-
+const ProductsItem: FC<IProductItem> = ({ product, hanleClick }) => {
 	return (
-		<div className={styles.products__item}>
+		<div
+			className={styles.products__item}
+			onClick={() => hanleClick && hanleClick(product.id)}
+		>
 			<div className={styles.products__image}>
-				<Image src={product.image[0]} alt={product.name} fill />
+				<Image src={product?.image[0]} alt={product.name} fill />
 			</div>
 			<div className={styles.products__content}>
 				<FavoriteButton product={product} />

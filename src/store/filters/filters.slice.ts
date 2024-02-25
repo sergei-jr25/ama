@@ -18,10 +18,7 @@ const filterSlice = createSlice({
 			state.queryParams[payload.key] = payload.value
 			state.isFilterUpdate = true
 		},
-		resetFilter: state => {
-			state.isFilterUpdate = false
-			state.queryParams = queryParams
-		},
+		resetFilter: () => initialState,
 	},
 })
 

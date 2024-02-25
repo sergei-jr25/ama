@@ -9,7 +9,7 @@ const Categorys: FC<{ categorys: ICategory[] }> = ({ categorys }) => {
 	return (
 		<div className={styles.category}>
 			{categorys.map(category => (
-				<CategorysItem category={category} />
+				<CategorysItem key={category.id} category={category} />
 			))}
 		</div>
 	)

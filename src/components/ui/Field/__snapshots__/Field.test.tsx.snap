@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Field Component renders label with correct text and input with correct placeholder and type 1`] = `
+<input
+  class="field__input"
+  name="input"
+  placeholder="Placeholder"
+  type="text"
+/>
+`;

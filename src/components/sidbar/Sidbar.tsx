@@ -2,7 +2,7 @@ import { ICategory } from '@/types/category.interface'
 import { FC } from 'react'
 import Categorys from '../screens/Categorys/Categorys'
 
-interface ISaidBar {
+export interface ISaidBar {
 	categorys: ICategory[]
 }
 

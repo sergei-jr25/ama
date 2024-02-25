@@ -1,39 +1,21 @@
-import { useProducts } from '@/components/screens/Products/useProducts'
-import { useActions } from '@/hooks/useActions'
 import { useFilters } from '@/hooks/useFilters'
-import { categoryService } from '@/services/category.service'
-import { ICategory } from '@/types/category.interface'
+// import { useFilters } from '../../../../hooks/useFilters'
+
 import { useSearchParams } from 'next/navigation'
 import { FC } from 'react'
-import { useQuery } from 'react-query'
 import CheckBox from '../../CheckBox/CheckBox'
 import styles from './CatalogGroup.module.scss'
+import { useCatalogGroup } from './useCatalogGroup'
 
 const CatalogGroup: FC = () => {
-	const { data, isFetched } = useQuery<ICategory[]>('product group', () =>
-		categoryService.getAll()
-	)
+	const { data, isFetched } = useCatalogGroup()
 	const searchParams = useSearchParams()
-	const newParams = new URLSearchParams(searchParams.toString())
-
-	const { refetch } = useProducts()
 
 	const categoryId = searchParams.get('category')
-	const {
-		uploadNewParams,
-		removeQueryParams,
-		checkQueryParams,
-		isFilterUpdate,
-	} = useFilters()
+	const { uploadNewParams, removeQueryParams } = useFilters()
 
-	const { resetFilter } = useActions()
-
-	const clearFilters = async () => {
+	const clearFilters = () => {
 		removeQueryParams()
-		refetch()
-		// if (!isFilterUpdate) {
-		//
-		// }
 	}
 
 	const setCategory = (categoryId: number) => {
@@ -46,6 +28,7 @@ const CatalogGroup: FC = () => {
 				<CheckBox
 					key={category.id}
 					isChecked={categoryId ? +categoryId === category.id : false}
+					onClick={() => setCategory(category.id)}
 					children={
 						<div
 							className={`${styles.group__category} ${
@@ -53,7 +36,6 @@ const CatalogGroup: FC = () => {
 									? styles.group__category_active
 									: ''
 							} `}
-							onClick={() => setCategory(category.id)}
 						>
 							{category.name}
 						</div>
@@ -61,8 +43,12 @@ const CatalogGroup: FC = () => {
 				/>
 			))}
 
-			<button onClick={clearFilters} className={styles.group__button}>
-				Сбросить все
+			<button
+				data-testid='button-catalog'
+				onClick={clearFilters}
+				className={styles.group__button}
+			>
+				Сбросить
 			</button>
 		</div>
 	)

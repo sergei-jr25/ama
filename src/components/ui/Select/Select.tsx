@@ -21,19 +21,20 @@ const CustomSelect: FC<{
 	}
 
 	return (
-		<div className={styles.select}>
-			<div
+		<div className={styles.select} data-testid='select-test-id'>
+			<h3
 				className={`${styles.select__header}    ${
 					isOpen ? styles.select__open : ''
 				}    `}
 				onClick={toggleDropdown}
 			>
 				{selectedOption ? selectedOption : 'Select an option'}
-			</div>
+			</h3>
 			{isOpen && (
-				<ul className={styles.select__options}>
+				<ul className={styles.select__options} data-testid='select-list'>
 					{Object.values(EnumProductSort).map(value => (
 						<li
+							data-testid='select-list-item'
 							className={styles.select__option}
 							key={value}
 							onClick={() => handleOptionClick(value)}

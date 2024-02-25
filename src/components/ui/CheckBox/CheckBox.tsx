@@ -12,15 +12,14 @@ const CheckBox: FC<PropsWithChildren<ICheckBox>> = ({
 	children,
 }) => {
 	return (
-		<div className={styles.checkbox}>
+		<label className={styles.checkbox} onClick={onClick}>
 			<button
-				onClick={onClick}
 				className={`${styles.checkbox__button} ${
 					isChecked ? styles.checkbox__button_active : ''
 				}`}
 			></button>
 			{children}
-		</div>
+		</label>
 	)
 }
 export default CheckBox

@@ -13,12 +13,9 @@ export interface ILayout {
 }
 
 const Layout: FC<ILayout> = ({ categorys, products }) => {
-	console.log(categorys)
-
 	return (
 		<div className={styles.layout}>
 			<div className={styles.layout__container}>
-				{/* <Header /> */}
 				<div className={styles.layout__content}>
 					<Sidbar categorys={categorys} />
 					<div className={styles.layout__main}>

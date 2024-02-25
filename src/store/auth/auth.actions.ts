@@ -7,10 +7,9 @@ import { IAuthField, IAuthResponse } from '../../types/auth.interface'
 
 export const userRegister = createAsyncThunk<IAuthResponse, IAuthField>(
 	'users/register',
-	async ({ email, password }, thunkApi) => {
+	async ({ email, password }, { rejectWithValue }) => {
 		try {
 			const response = await userService.register(email, password)
-			console.log(response)
 
 			if (response.data.tokens.accessToken) {
 				authStorage(response.data)
@@ -20,7 +19,7 @@ export const userRegister = createAsyncThunk<IAuthResponse, IAuthField>(
 			return response.data
 		} catch (error) {
 			toastrError(error)
-			return thunkApi.rejectWithValue(error)
+			return rejectWithValue(error)
 		}
 	}
 )
@@ -28,8 +27,6 @@ export const userRegister = createAsyncThunk<IAuthResponse, IAuthField>(
 export const userLogin = createAsyncThunk<IAuthResponse, IAuthField>(
 	'users/login',
 	async ({ email, password }, thunkApi) => {
-		console.log('login')
-
 		try {
 			const response = await userService.login(email, password)
 			console.log(response)

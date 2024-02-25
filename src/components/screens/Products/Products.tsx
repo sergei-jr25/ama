@@ -23,16 +23,12 @@ const Products: FC<{ products: IProduct[] }> = ({ products }) => {
 		uploadNewParams('sort', option)
 	}
 
-	console.log(products.length, 'length')
-	console.log()
-
 	const handlePagination = (currentPage: number) => {
 		console.log(currentPage)
 		setPage(+currentPage)
 		uploadNewParams('page', String(currentPage))
 	}
 
-	const totalItems = 10 // Общее количество товаров
 	const itemsPerPage = 5 // Количество товаров на странице
 	const totalPage = Math.ceil(data.length / itemsPerPage)
 
@@ -43,24 +39,46 @@ const Products: FC<{ products: IProduct[] }> = ({ products }) => {
 
 	return (
 		<div className={styles.products}>
-			<div className={styles.products__select}>
-				<CustomSelect handleSorting={handleSorting} />
-				{/* <p>Selected option: {selectedOption ? selectedOption.label : 'None'}</p> */}
-			</div>
+			{data?.products?.length ? (
+				<div className={styles.products__select}>
+					<CustomSelect handleSorting={handleSorting} />
+				</div>
+			) : (
+				<div></div>
+			)}
 
 			<div className={styles.products__items}>
-				{data?.products?.map((product: IProduct) => (
-					<ProductsItem key={product.id} product={product} />
-				))}
+				{data.products ? (
+					data.products?.map((product: IProduct) => (
+						<ProductsItem key={product.id} product={product} />
+					))
+				) : (
+					<>
+						<div className={styles.products__item_loading}>
+							<div className={styles.products__spinnner}></div>
+						</div>
+						<div className={styles.products__item_loading}>
+							<div className={styles.products__spinnner}></div>
+						</div>
+						<div className={styles.products__item_loading}>
+							<div className={styles.products__spinnner}></div>
+						</div>
+						<div className={styles.products__item_loading}>
+							<div className={styles.products__spinnner}></div>
+						</div>
+					</>
+				)}
 			</div>
 
-			<div className={styles.products__pagination}>
-				<Pagination
-					handleClick={(currentPage: number) => handlePagination(currentPage)}
-					pages={pages}
-					currentPage={page}
-				/>
-			</div>
+			{data?.products?.length && (
+				<div className={styles.products__pagination}>
+					<Pagination
+						handleClick={(currentPage: number) => handlePagination(currentPage)}
+						pages={pages}
+						currentPage={page}
+					/>
+				</div>
+			)}
 		</div>
 	)
 }

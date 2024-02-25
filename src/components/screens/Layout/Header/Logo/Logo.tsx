@@ -1,6 +1,7 @@
+import Link from 'next/link'
 import { FC } from 'react'
 
 const Logo: FC = () => {
-	return <div>Logo</div>
+	return <Link href={'/'}>Logo</Link>
 }
 export default Logo

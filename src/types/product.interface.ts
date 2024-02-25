@@ -15,10 +15,10 @@ export interface IProduct {
 	image: string[]
 	name: string
 	searchTerm: string
-	orderItem: iOrderItem
-	category: ICategory
-	user: IUser
-	reviews: IReview
+	orderItem?: iOrderItem
+	category?: ICategory
+	user?: IUser
+	reviews?: IReview
 }
 
 export interface IProducts {
